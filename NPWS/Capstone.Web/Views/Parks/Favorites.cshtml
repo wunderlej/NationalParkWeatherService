@@ -1,0 +1,22 @@
+﻿@model IList<FavoriteListViewModel>
+@{
+    ViewData["Title"] = "Favorited Parks";
+}
+
+<div id="parks-list">
+    @foreach (FavoriteListViewModel park in Model)
+    {
+        <div class="fav-list-grid">
+            <a asp-controller="parks" asp-action="detail" asp-route-parkCode="@(park.ParkCode)">
+                <img src="~/images/parks/@(park.ParkCode.ToLower()).jpg" class="fav-list-image" />
+            </a>
+            <a asp-controller="parks" asp-action="detail" asp-route-parkCode="@(park.ParkCode)" class="fav-list-name">
+                <p>@(park.ParkName)</p>
+            </a>
+            <p class="fav-list-state">@(park.State)</p>
+            <p>@(park.NumberSurveys) surveys submitted</p>
+        </div>
+    }
+
+
+</div>

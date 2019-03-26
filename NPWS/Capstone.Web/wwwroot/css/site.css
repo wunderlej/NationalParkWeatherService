@@ -1,0 +1,301 @@
+﻿/** {
+    color: white;
+}*/
+
+
+body {
+    background-color: #659DBD;
+    margin: 0;
+}
+
+a :hover {
+    color: rgb(31,201,9);
+}
+
+
+header {
+    padding-left: 10%;
+    background-color: #659DBD;
+}
+
+main {
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: white;
+}
+
+
+footer {
+    padding-left: 10%;
+    padding-bottom: 20px;
+    background-color: #659DBD;
+}
+
+#nav-logo {
+    height: 100%;
+    max-height: 75px;
+    object-fit: contain;
+    display: block;
+}
+
+#nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /*border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;*/
+    padding: 5px;
+}
+
+#nav-list li {
+    background-color: lightgrey;
+    border-radius: 10%;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+#nav-list :hover {
+    background-color: white;
+    color: rgb(31,201,9);
+}
+
+#nav-list li a {
+    text-decoration: none;
+    color: black;
+}
+
+#parks-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex-flow: column;
+}
+
+#parks-list > :first-child {
+    border-top: none;
+}
+
+#parks-list > :last-child {
+    border-bottom: none;
+}
+
+.park-list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "image details";
+    grid-gap: 25px;
+    padding: 10px 0 10px 0;
+    border-bottom: 1px solid lightgrey;
+    border-top: 1px solid lightgrey;
+}
+
+.park-list-grid > a {
+    text-align: center;
+    grid-area: image;
+}
+
+.park-list-image {
+    object-fit: contain;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid white;
+    border-radius: 8%;
+}
+
+.park-list-details {
+    grid-area: details;
+}
+
+.park-list-details h3 {
+    margin: 0;
+}
+
+.park-list-details h4 {
+    margin-top: 0;
+}
+
+.detail-container {
+    display: flex;
+    flex-wrap:wrap;
+    padding-top: 20px;
+}
+
+.detail-container img {
+    border: 1px solid white;
+    border-radius: 8%;
+}
+
+.title-facts {
+    margin-left: 20px;
+}
+
+h3 {
+    margin: 0;
+}
+
+h4 {
+    margin-top: 0;
+}
+
+div ul li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    list-style: none;
+}
+
+.weather-section {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}
+
+.weather-container {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 8%;
+    border: 5px solid white;
+}
+
+.weather-container img {
+    width: 125px;
+    border: 1px solid white;
+    border-radius: 8%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.message {
+    width: 125px;
+}
+
+.weather-container:nth-child(1) {
+    border: 5px solid rgb(31,201,9);
+}
+
+.weather-container:hover {
+    border: 5px solid #659DBD;
+}
+
+button {
+    border-radius: 25%;
+    padding: 15px 5px;
+    background-color: #659DBD;
+    color: white;
+}
+
+#survey-header {
+    padding-top: 20px;
+}
+
+#survey-form {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-areas:
+        "park-label  park-input ."
+        "email-label email-input ."
+        "state-label state-input ."
+        "activity-label activity-input ."
+        "button button .";
+    grid-gap: 25px;
+    padding: 25px 0 200px 0;
+    border-top: 1px solid lightgrey;
+}
+
+#survey-form > label {
+    font-weight: bold;
+}
+
+.validations {
+    color: red;
+    font-weight: bold;
+}
+
+#survey-form * {
+    font-size: 1.1em;
+}
+
+#survey-park-label {
+    grid-area: park-label;
+}
+
+#survey-park-input {
+    grid-area: park-input;
+}
+
+#survey-email-label {
+    grid-area: email-label;
+}
+
+#survey-email-input {
+    grid-area: email-input;
+}
+
+#survey-state-label {
+    grid-area: state-label;
+}
+
+#survey-state-input {
+    grid-area: state-input;
+}
+
+#survey-activity-label {
+    grid-area: activity-label;
+}
+
+#survey-activity-input {
+    grid-area: activity-input;
+}
+
+#survey-button {
+    grid-area: button;
+    text-align: center;
+}
+
+.fav-list-grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    grid-template-areas:
+        "image name state surveys";
+    grid-gap: 25px;
+    padding: 10px 0 10px 0;
+    border-bottom: 1px solid lightgrey;
+    border-top: 1px solid lightgrey;
+}
+
+.fav-list-grid > :first-of-type a {
+    text-align: center;
+    grid-area: image;
+}
+
+.fav-list-image {
+    object-fit: contain;
+    width: 100%;
+    max-width: 200px;
+    border: 1px solid white;
+    border-radius: 8%;
+}
+
+.fav-list-name {
+    grid-area: name;
+    text-decoration: none;
+    color: black;
+}
+
+.fav-list-state {
+    grid-area: state;
+}
+
+.fav-list-surveys {
+    grid-area: surveys;
+}
+
+#unit-switches form {
+    display: inline-block;
+}

@@ -1,0 +1,25 @@
+﻿@model IList<ParkListViewModel>
+@{
+    ViewData["Title"] = "National Park Geek";
+}
+
+<div id="parks-list">
+    @foreach (ParkListViewModel park in Model)
+    {
+        <div class="park-list-grid">
+            <a asp-controller="parks" asp-action="detail" asp-route-parkCode="@(park.ParkCode)">
+                <img src="~/images/parks/@(park.ParkCode.ToLower()).jpg" class="park-list-image" />
+            </a>
+            <div class="park-list-details">
+                <a asp-controller="parks" asp-action="detail" asp-route-parkCode="@(park.ParkCode)" style="text-decoration:none; color: black;">
+                    <h3>@(park.ParkName)</h3>
+                </a>
+                <h4>@(park.State)</h4>
+                <p>@(park.ParkDescription)</p>
+
+            </div>
+        </div>
+    }
+
+
+</div>

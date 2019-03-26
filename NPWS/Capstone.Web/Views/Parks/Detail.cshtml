@@ -1,0 +1,69 @@
+﻿@model DetailViewModel
+
+@{
+    ViewData["Title"] = $"{Model.Park.ParkName}";
+
+}
+<div class="detail-container">
+    <img src="~/images/parks/@(Model.Park.ParkCode.ToLower()).jpg" />
+    <div class="title-facts">
+        <div>
+            <h3>@(Model.Park.ParkName)</h3>
+            <h4>@(Model.Park.State)</h4>
+        </div>
+        <div>
+            <ul class="list">
+                <li>Size: @(Model.Park.Acreage.ToString("N0")) acres</li>
+                <li>Elevation: @(Model.Park.ElevationString(Model.IsMetric))</li>
+                <li>Trails: @(Model.Park.TrailsString(Model.IsMetric))</li>
+                <li>Number of Campsites: @(Model.Park.NumberOfCampsites.ToString("N0"))</li>
+                <li>Climate: @(Model.Park.Climate)</li>
+                <li>Year Founded: @(Model.Park.YearFounded)</li>
+                <li>Annual Visitors: @(Model.Park.AnnualVisitorCount.ToString("N0"))</li>
+                <li>Entry Fee: @(Model.Park.EntryFee.ToString("C"))</li>
+                <li>Number of Animal Species: @(Model.Park.NumberOfAnimalSpecies)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p style="font-style:italic; margin-bottom: 0;">"@(Model.Park.InspirationalQuote)"</p>
+    <p style="margin-top: 0;">~ @(Model.Park.InspirationalQuoteSource)</p>
+    <p>Description: @(Model.Park.ParkDescription)</p>
+</div>
+
+<div id="unit-switches">
+    <form asp-controller="Parks" asp-action="SwitchDegree" method="post">
+        <input type="hidden" value="@(Model.IsCelsius.ToString())" name="isThisCelsius" />
+        <input type="hidden" value="@(Model.Park.ParkCode)" name="parkCode" />
+        <button>Switch Scale (°C/°F)</button>
+    </form>
+    <form asp-controller="Parks" asp-action="SwitchSystem" method="post">
+        <input type="hidden" value="@(Model.IsMetric.ToString())" name="isThisMetric" />
+        <input type="hidden" value="@(Model.Park.ParkCode)" name="parkCode" />
+        <button>Switch System (Imperial/Metric)</button>
+    </form>
+</div>
+
+<div class="weather-section">
+    @foreach (var day in Model.FiveDayForecast)
+    {
+        <div class="weather-container">
+           
+                <div>@day.WeekDay</div>
+                <div>
+                    <span>@day.HighTempString(Model.IsCelsius) / @day.LowTempString(Model.IsCelsius)</span>
+                </div>
+                <img src="~/images/weather/@(day.Forecast.Replace(" ", "")).png" />
+                <div class="message">
+                    @foreach (var message in day.WarningMessages())
+                    {
+                        <div>@message</div>
+                    }
+                </div>
+            
+        </div>
+    }
+</div>
+

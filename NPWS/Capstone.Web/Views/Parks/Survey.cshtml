@@ -1,0 +1,44 @@
+﻿@model SurveyViewModel
+
+@{
+    ViewData["Title"] = "Favorite Park Survey";
+
+}
+
+<h2 id="survey-header">Favorite Park Survey</h2>
+
+<form asp-controller="Parks" asp-action="SubmitSurvey" method="post" id="survey-form">
+    <label asp-for="SelectedParkCode" id="survey-park-label"></label>
+    <div id="survey-park-input">
+        <select asp-for="SelectedParkCode" asp-items="Model.Parks"></select>
+        <span asp-validation-for="SelectedParkCode" class="validations"></span>
+        @Html.ValidationMessage("invalidCode", new { @class = "validations" })
+    </div>
+
+    <label asp-for="Email" id="survey-email-label"></label>
+    <div id="survey-email-input">
+        <input asp-for="Email" />
+        <span asp-validation-for="Email" class="validations"></span>
+    </div>
+
+    <label asp-for="SelectedState" id="survey-state-label"></label>
+    <div id="survey-state-input">
+        <select asp-for="SelectedState" asp-items="SurveyViewModel.States"></select>
+        <span asp-validation-for="SelectedState" class="validations"></span>
+        @Html.ValidationMessage("invalidState", new { @class = "validations" })
+    </div>
+
+    <label asp-for="ActivityLevel" id="survey-activity-label"></label>
+    <div id="survey-activity-input">
+        @foreach (string level in SurveyViewModel.ActivityLevels)
+        {
+            <input asp-for="ActivityLevel" type="radio" value="@level" />
+            <label for="@level">@level</label>
+        }
+        <span asp-validation-for="ActivityLevel" class="validations"></span>
+        @Html.ValidationMessage("invalidActivity", new { @class = "validations" })
+    </div>
+    <div id="survey-button">
+        <button>Submit</button>
+    </div>
+</form>

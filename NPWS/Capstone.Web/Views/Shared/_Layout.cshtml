@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Capstone.Web</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <header>
+        <img src="~/images/logo.png" id="nav-logo" />
+        <ul id="nav-list">
+            <li><a asp-area="" asp-controller="Parks" asp-action="Index">Home</a></li>
+            <li><a asp-area="" asp-controller="Parks" asp-action="Favorites">Favorites</a></li>
+            <li><a asp-area="" asp-controller="Parks" asp-action="Survey">Survey</a></li>
+        </ul>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <p>&copy; 2018 - Capstone.Web</p>
+    </footer>
+</body>
+</html>
